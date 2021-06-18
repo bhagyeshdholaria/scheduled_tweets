@@ -4,6 +4,9 @@
 Rails.application.routes.draw do
   get 'about-us-new', to: 'about#index', as: :aboutpage
 
+  get 'sign_up', to: 'registration#new'
+  post 'sign_up', to: 'registration#create'
+
   root to: 'main#index'
 
 end
