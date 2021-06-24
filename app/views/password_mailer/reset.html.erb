@@ -1,0 +1,6 @@
+<h1>Password Reset Request</h1>
+
+<p>
+  Hi <%= @greeting %>, please click below to reset your password.
+</p>
+<%= link_to 'Reset Password', password_reset_edit_url(token: @token) %>

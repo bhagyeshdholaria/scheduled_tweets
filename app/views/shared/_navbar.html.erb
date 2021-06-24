@@ -20,7 +20,7 @@
 
         <% if Current.user %>
 <!--          <li>-->
-          <span class="navbar-text ms-auto"><%= Current.user.email %></span>
+          <%= link_to Current.user.email,  edit_password_path, class: 'nav-link' %>
 <!--          </li>-->
           <li>
             <%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-outline-secondary' %>
