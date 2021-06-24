@@ -23,11 +23,8 @@ Rails.application.routes.draw do
   get 'auth/twitter/callback', to: 'omniauth_callbacks#twitter'
 
   resources :twitter_accounts
+  resources :tweets
 
   root to: 'main#index'
 
 end
-
-# IyeT5mWpeR1XE9aHP5xLYhbbs
-# TetzmRCh0tTmo9wtDQm8iCFii2RsOcvr5ZYLSTpHBMFqR7MGSl
-# AAAAAAAAAAAAAAAAAAAAAFn3QwEAAAAAxL0LxrupLOkMAcjBF2pHyU%2BC6FA%3DIp47wzeusv97mvwtyJtYxOOJNgh6PpzGNHYf3v3IFZdQ4XmOxB

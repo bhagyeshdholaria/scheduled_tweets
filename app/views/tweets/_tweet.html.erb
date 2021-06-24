@@ -1,0 +1,18 @@
+<div class="card text-dark bg-light mb-3" style="max-width: 50%;">
+  <div class="card-header">
+    <img src="<%=  tweet.twitter_account.image %>" class='rounded-circle me-2'>
+    <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title text-primary d-flex align-items-center justify-content-between">
+      <% if tweet.publish? %>
+        <%= link_to 'View Tweet', "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank , class: 'btn btn-outline-success'%>
+      <% else %>
+        <%= link_to 'Edit tweet', edit_tweet_path(tweet), class: 'btn btn-outline-dark me-2' %>
+        <%= link_to 'Delete tweet', tweet_path(tweet), method: :delete, class: 'btn btn-outline-danger', data: {confirm: 'Are you sure?'} %>
+        <div class="ms-auto"> Scheduled for: <%= l tweet.publish_at, format: :short %> </div>
+      <% end %>
+    </h6>
+    <p class="card-text fs-4 text-secondary mt-3"><%= tweet.body %></p>
+  </div>
+</div>
