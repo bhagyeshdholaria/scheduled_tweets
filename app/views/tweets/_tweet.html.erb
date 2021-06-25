@@ -5,7 +5,7 @@
   </div>
   <div class="card-body">
     <h6 class="card-title text-primary d-flex align-items-center justify-content-between">
-      <% if tweet.publish? %>
+      <% if tweet.published? %>
         <%= link_to 'View Tweet', "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank , class: 'btn btn-outline-success'%>
       <% else %>
         <%= link_to 'Edit tweet', edit_tweet_path(tweet), class: 'btn btn-outline-dark me-2' %>

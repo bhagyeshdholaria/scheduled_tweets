@@ -6,10 +6,21 @@ class Tweet < ApplicationRecord
   validates :publish_at, presence: true
 
   after_initialize do
-    self.publish_at ||= 24.hour.from_now
+    self.publish_at ||= 5.minute.from_now
   end
 
-  def publish?
+  after_save_commit do    # callback after create or update a record
+    if publish_at_previously_changed?
+      TweetJob.set(wait_until: publish_at).perform_later(self)
+    end
+  end
+
+  def published?
     tweet_id?
+  end
+
+  def publish_to_twitter!
+    tweet = twitter_account.client.update(body)
+    update(tweet_id: tweet.id)
   end
 end
